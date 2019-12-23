@@ -1,7 +1,7 @@
 package main
 
 import (
-	day2partA "github.com/Agathoklis76/adventofcode2019/Day2/PartA"
+	day2partB "github.com/Agathoklis76/adventofcode2019/Day2/PartB"
 )
 
 func main() {
@@ -12,6 +12,9 @@ func main() {
 	//day1partB.Run()
 
 	// Day2 PartA
-	day2partA.Run()
+	//day2partA.Run()
+
+	// Day2 PartB
+	day2partB.Run()
 
 }
