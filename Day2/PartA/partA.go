@@ -9,17 +9,17 @@ import (
 	"strings"
 )
 
-func Run()  {
+func Run() {
 	fmt.Println("Day2 PartA")
 
 	values := ReadFile("./Day2/input.txt")
 
+	values[1] = 12
+	values[2] = 2
 	finalValues := intCode(values)
 
 	fmt.Println(finalValues)
 }
-
-
 
 func ReadFile(file string) []int {
 	bytes, err := ioutil.ReadFile(file)
@@ -37,7 +37,7 @@ func toInt(input []byte) []int {
 	for _, v := range fields {
 		values := strings.Split(string(v), ",")
 
-		for _,v  := range values  {
+		for _, v := range values {
 			intField, err := strconv.Atoi(v)
 			if err != nil {
 				log.Fatal(err)
@@ -51,12 +51,8 @@ func toInt(input []byte) []int {
 }
 
 func intCode(input []int) []int {
-
-	input[1] = 12
-	input[2] = 2
-
 	var (
-		i = 0
+		i                    = 0
 		posInputA, posInputB int
 	)
 
@@ -65,11 +61,11 @@ func intCode(input []int) []int {
 
 		switch opcode {
 		case 1:
-			posInputA, posInputB = input[i+ 1], input[i+ 2]
-			input[i+3] = input[posInputA] + input[posInputB]
+			posInputA, posInputB = input[i+1], input[i+2]
+			input[input[i+3]] = input[posInputA] + input[posInputB]
 		case 2:
-			posInputA, posInputB = input[1], input[2]
-			input[i+3] = input[posInputA] * input[posInputB]
+			posInputA, posInputB = input[i+1], input[i+2]
+			input[input[i+3]] = input[posInputA] * input[posInputB]
 		case 99:
 			return input
 		default:
